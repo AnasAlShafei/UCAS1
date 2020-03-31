@@ -1,0 +1,2 @@
+php artisan make:model maillist -mcr
+php artisan make:model category -mcr
