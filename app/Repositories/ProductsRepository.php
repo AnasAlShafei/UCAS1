@@ -5,6 +5,7 @@ namespace App\Repositories;
 
 
 use App\products;
+use Facade\FlareClient\Http\Response;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -144,5 +145,59 @@ class ProductsRepository implements ProductsInterface
         //
         $product = products::find($id);
         return view('control.products.edit', compact('product'));;
+    }
+
+
+    //                   /  API /                   /
+
+    /***
+     * Show Products To User with Auth
+     */
+    public function ApiShowProducts()
+    {
+        $products = products::all();
+        return Response()->json($products);
+    }
+
+    /**
+     *  function Store NEW Product
+     *
+     * @param Request $request
+     * @return string
+     */
+    public function ApiStoreProduct(Request $request)
+    {
+        $product = [
+            'title' => $request->title,
+            'user_id' => Auth::user()->id,
+            'body' => $request->body,
+        ];
+        products::create($product);
+        return Response()->json('Sucess add Products');
+    }
+
+    /**
+     * function To show product by id
+     *
+     * @param int $id
+     * @return String
+     */
+    public function ApiShowProductById($id)
+    {
+        $product = products::find($id);
+        return response()->json($product);
+    }
+
+    /**
+     * delete Product
+     *
+     * @param int $id
+     * @return void
+     */
+    public function ApiDeleteProduct($id)
+    {
+        $product = products::find($id);
+        $product->delete($id);
+        return response()->json($product);
     }
 }

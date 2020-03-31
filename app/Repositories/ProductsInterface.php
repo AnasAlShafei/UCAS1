@@ -13,12 +13,6 @@ interface ProductsInterface
      */
     public function getProducts();
     /**
-     * function Get All Products
-     *
-     * @return void
-     */
-    public function getAllProducts();
-    /**
      *  function Show Product
      *
      * @param [type] $id
@@ -71,4 +65,32 @@ interface ProductsInterface
      * @return void
      */
     public function editProductbyId($id);
+
+
+    //               /API/                  //
+    /***
+     * Show Products To User with Auth
+     */
+    public function ApiShowProducts();
+    /**
+     *  function Store NEW Product
+     *
+     * @param Request $request
+     * @return string
+     */
+    public function ApiStoreProduct(Request $request);
+     /**
+     * function To show product by id
+     *
+     * @param int $id
+     * @return String
+     */
+    public function ApiShowProductById($id);
+      /**
+     * delete Product
+     *
+     * @param int $id
+     * @return void
+     */
+    public function ApiDeleteProduct($id);
 }

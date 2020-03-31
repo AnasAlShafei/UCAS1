@@ -105,4 +105,44 @@ class ProductsController extends Controller
         return $this->products->getProductByUserId($id);
     }
 
+
+    //            / Api /              //
+    /***
+     * Show Products To User with Auth
+    */
+    public function ApiShowProducts()
+    {
+        return $this->products->ApiShowProducts();
+    }
+    /**
+     *  function Store NEW Product
+     *
+     * @param Request $request
+     * @return string
+     */
+    public function ApiStoreProduct(Request $request)
+    {
+        return $this->products->ApiStoreProduct($request);
+    }
+    /**
+     * function To show product by id
+     *
+     * @param int $id
+     * @return String
+     */
+    public function ApiShowProductById($id)
+    {
+        return $this->products->ApiShowProductById($id);
+    }
+
+    /**
+     * delete Product
+     *
+     * @param int $id
+     * @return void
+     */
+    public function ApiDeleteProduct($id)
+    {
+        $this->products->ApiDeleteProduct($id);
+    }
 }

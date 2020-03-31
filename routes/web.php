@@ -16,20 +16,20 @@ Route::get('/', function () {
 });
 
 
-Route::resource('stadium', 'StadiumController');
-Route::post('/stadium/{stadium}', 'StadiumController@updatestatus');
-Route::post('stadiumsearch', 'StadiumController@search');
+// Route::resource('stadium', 'StadiumController');
+// Route::post('/stadium/{stadium}', 'StadiumController@updatestatus');
+// Route::post('stadiumsearch', 'StadiumController@search');
 
 
-Route::resource('pool', 'PoolController');
-Route::post('/pool/{pool}', 'PoolController@updatestatus');
-Route::post('poolsearch', 'PoolController@search');
+// Route::resource('pool', 'PoolController');
+// Route::post('/pool/{pool}', 'PoolController@updatestatus');
+// Route::post('poolsearch', 'PoolController@search');
 
 
 
-Route::resource('Bodybuilding', 'BodybuildingController');
-Route::post('Bodybuilding/{bodybuilding}', 'BodybuildingController@updatestatus');
-Route::post('Bodybuildingsearch', 'BodybuildingController@search');
+// Route::resource('Bodybuilding', 'BodybuildingController');
+// Route::post('Bodybuilding/{bodybuilding}', 'BodybuildingController@updatestatus');
+// Route::post('Bodybuildingsearch', 'BodybuildingController@search');
 
 
 //////////////////////////////////////////////////////////
