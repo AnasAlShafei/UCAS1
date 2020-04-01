@@ -79,18 +79,32 @@ interface ProductsInterface
      * @return string
      */
     public function ApiStoreProduct(Request $request);
-     /**
+    /**
      * function To show product by id
      *
      * @param int $id
      * @return String
      */
     public function ApiShowProductById($id);
-      /**
+    /**
      * delete Product
      *
      * @param int $id
      * @return void
      */
     public function ApiDeleteProduct($id);
+
+    /**
+     * Show Product For Admin
+     *
+     * @return void
+     */
+    public function ApiShowProductsForAdmin();
+    /**
+     * Show product with User_id in \App\products
+     *
+     * @param Type $var
+     * @return void
+     */
+    public function ApiShowProductsForEditor();
 }

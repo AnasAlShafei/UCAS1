@@ -155,8 +155,14 @@ class ProductsRepository implements ProductsInterface
      */
     public function ApiShowProducts()
     {
-        $products = products::all();
-        return Response()->json($products);
+        if (Auth::user()->role_id == 1) {
+            $products = products::all();
+            return Response()->json($products);
+        }
+        if (Auth::user()->role_id == 2) {
+            $products = products::where('user_id', Auth::user()->id)->get();
+            return Response()->json($products);
+        }
     }
 
     /**
@@ -199,5 +205,29 @@ class ProductsRepository implements ProductsInterface
         $product = products::find($id);
         $product->delete($id);
         return response()->json($product);
+    }
+
+    /**
+     * Show Product For Admin
+     *
+     * @return void
+     */
+    public function ApiShowProductsForAdmin()
+    {
+        # code...
+        $products = products::all();
+        return Response()->json($products);
+    }
+
+    /**
+     * Show product with User_id in \App\products
+     *
+     * @param Type $var
+     * @return void
+     */
+    public function ApiShowProductsForEditor()
+    {
+        $products = products::where('user_id', Auth::user()->id)->get();
+        return Response()->json($products);
     }
 }

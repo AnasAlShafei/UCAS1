@@ -109,7 +109,7 @@ class ProductsController extends Controller
     //            / Api /              //
     /***
      * Show Products To User with Auth
-    */
+     */
     public function ApiShowProducts()
     {
         return $this->products->ApiShowProducts();
@@ -144,5 +144,25 @@ class ProductsController extends Controller
     public function ApiDeleteProduct($id)
     {
         $this->products->ApiDeleteProduct($id);
+    }
+
+    /**
+     * Show Product For Admin
+     *
+     * @return void
+     */
+    public function ApiShowProductsForAdmin()
+    {
+        return $this->products->ApiShowProductsForAdmin();
+    }
+    /**
+     * Show product with User_id in \App\products
+     *
+     * @param Type $var
+     * @return void
+     */
+    public function ApiShowProductsForEditor()
+    {
+        return $this->products->ApiShowProductsForEditor();
     }
 }
