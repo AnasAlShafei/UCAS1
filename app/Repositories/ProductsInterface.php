@@ -107,4 +107,36 @@ interface ProductsInterface
      * @return void
      */
     public function ApiShowProductsForEditor();
+
+
+    //Home Work // Api // CRUD #4 //
+
+    /**
+     * Show only trashed
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function ApiGetTrashedProducts();
+    /**
+     * Restore product
+     *
+     * @param int $id
+     * @return void
+     */
+    public function ApiRestoreProduct($id);
+
+    /**
+     * Force Delete Product ...
+     *
+     * @param int $id
+     * @return void
+     */
+    public function ApiForceDeleteProduct($id);
+    /**
+     * Soft Deelte To product
+     *
+     * @param [type] $id
+     * @return void
+     */
+    public function ApiSoftDeleteProduct($id);
 }

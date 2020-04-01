@@ -28,21 +28,35 @@ Route::group(['prefix' => 'products', 'middleware' => 'auth:api', 'namespace' =>
 
     //store new product
     Route::post('/store', 'ProductsController@ApiStoreProduct');
+
     //show product by id
     Route::get('/ShowProduct/{id}', 'ProductsController@ApiShowProductById');
+
     //delete product by id
     Route::post('/delete/{id}', 'ProductsController@ApiDeleteProduct');
+
+
+    //Home Work // Api // CRUD #4 //
+
+    //Get Trashed
+    Route::get('/allTrashed', 'ProductsController@ApiGetTrashedProducts');
+    //Restore
+    Route::post('/Restore/{id}', 'ProductsController@ApiRestoreProduct');
+
+    //Force Delete
+    Route::delete('/forceDelete/{id}', 'ProductsController@ApiForceDeleteProduct');
+
+    //SoftDelete
+    Route::post('/SoftDelete/{id}', 'ProductsController@ApiSoftDeleteProduct');
 });
 
 
 Route::group(['prefix' => 'products', 'middleware' => 'auth:api,admin', 'namespace' => 'products'], function () {
 
     Route::get('/', 'ProductsController@ApiShowProducts');
-
 });
 
 Route::group(['prefix' => 'products', 'middleware' => 'auth:api,user', 'namespace' => 'products'], function () {
 
     Route::get('/', 'ProductsController@ApiShowProductsForEditor');
-
 });

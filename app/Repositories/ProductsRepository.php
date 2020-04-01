@@ -230,4 +230,59 @@ class ProductsRepository implements ProductsInterface
         $products = products::where('user_id', Auth::user()->id)->get();
         return Response()->json($products);
     }
+
+
+    //Home Work // Api // CRUD #4 //
+
+  /**
+     * Show only trashed
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function ApiGetTrashedProducts()
+    {
+
+        $products = products::onlyTrashed()->get();
+        return response()->json($products);
+    }
+
+    /**
+     * Restore product
+     *
+     * @param int $id
+     * @return void
+     */
+    public function ApiRestoreProduct($id)
+    {
+        products::withTrashed()
+            ->where('id', $id)
+            ->restore();
+        return response()->json('Done !');
+    }
+
+    /**
+     * Force Delete Product ...
+     *
+     * @param int $id
+     * @return void
+     */
+    public function ApiForceDeleteProduct($id)
+    {
+        $product = products::withTrashed()->find($id);
+        $product->forceDelete();
+        return response()->json('Done !');
+    }
+
+    /**
+     * Soft Deelte To product
+     *
+     * @param [type] $id
+     * @return void
+     */
+    public function ApiSoftDeleteProduct($id)
+    {
+        $post = products::find($id);
+        $post->delete();
+        return response()->json('Done !');
+    }
 }
